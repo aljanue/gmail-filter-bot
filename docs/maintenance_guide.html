@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maintenance Manual - Gmail Security Bot</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+            background-color: #f4f7f9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+        }
+        header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 20pt;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20pt;
+            text-align: center;
+        }
+        h1 { margin: 0; font-size: 22pt; }
+        h2 {
+            color: #1a73e8;
+            border-left: 5px solid #1a73e8;
+            padding-left: 10pt;
+            margin-top: 25pt;
+            font-size: 16pt;
+        }
+        h3 {
+            color: #555;
+            font-size: 12pt;
+            margin-top: 15pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section {
+            background: white;
+            padding: 15pt;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 15pt;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10pt;
+            display: block;
+            border-radius: 5px;
+            margin: 10pt 0;
+            font-size: 10pt;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .highlight {
+            color: #e91e63;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            font-size: 9pt;
+            color: #777;
+            margin-top: 30pt;
+            border-top: 1px solid #ddd;
+            padding-top: 10pt;
+        }
+        ul { padding-left: 20pt; }
+        li { margin-bottom: 5pt; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Maintenance Manual</h1>
+            <p>Gmail Security Bot - Google Cloud Platform</p>
+        </header>
+
+        <div class="section">
+            <h2>1. Status and Monitoring</h2>
+            <p>Use these commands to verify that the bot is operating correctly on your Debian instance.</p>
+            
+            <h3>Health Check (Status)</h3>
+            <code>sudo systemctl status gmailbot</code>
+            
+            <h3>Real-time Logs</h3>
+            <p>To see who is messaging the bot or which emails are being processed right now:</p>
+            <code>sudo journalctl -u gmailbot -f</code>
+        </div>
+
+        <div class="section">
+            <h2>2. Service Management</h2>
+            <p>Execution control for the background process.</p>
+            
+            <h3>Restart</h3>
+            <p>Required after changing the <span class="highlight">.env</span> file or the source code.</p>
+            <code>sudo systemctl restart gmailbot</code>
+            
+            <h3>Stop and Start</h3>
+            <code>sudo systemctl stop gmailbot
+sudo systemctl start gmailbot</code>
+        </div>
+
+        <div class="section">
+            <h2>3. Configuration and Files</h2>
+            <p>Critical paths within the server.</p>
+            
+            <h3>Project Folder</h3>
+            <code>cd ~/mail_filter_bot</code>
+            
+            <h3>Edit Environment Variables</h3>
+            <code>nano ~/mail_filter_bot/.env</code>
+            
+            <h3>Consult Email Database</h3>
+            <code>cat ~/mail_filter_bot/config.json</code>
+        </div>
+
+        <div class="section">
+            <h2>4. Code Update</h2>
+            <p>If you make improvements on your Mac and want to upload them:</p>
+            <ul>
+                <li>Upload the new <b>bot_produccion.zip</b> via SSH terminal.</li>
+                <li>Execute the following block:</li>
+            </ul>
+            <code>cd ~/mail_filter_bot
+unzip -o ../bot_produccion.zip
+sudo systemctl restart gmailbot</code>
+        </div>
+
+        <div class="footer">
+            <p>Generated for albertojativa0905 | Server: mail-filter-server</p>
+        </div>
+    </div>
+</body>
+</html>

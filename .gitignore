@@ -1,0 +1,15 @@
+.env
+credentials.json
+token.json
+config.json
+processed.json
+venv/
+*.zip
+env/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.DS_Store
+Thumbs.db
